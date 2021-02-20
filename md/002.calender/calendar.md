@@ -254,3 +254,153 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ![](img/011.png)
 
 И так теперь стартовая дата остается стартовой.
+
+И так все еще пытаюсь допедрить по механике.
+
+И так пробую вот такое условие. while(!day.isAfter()). Эта функция из библиотеки moment.js [https://momentjs.com/docs/#/query/is-after/](https://momentjs.com/docs/#/query/is-after/)
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import moment from 'moment';
+
+// console.log(moment());
+
+window.moment = moment; // запихиваю библиотеку в глабольный объект
+
+moment.updateLocale('rus', { week: { down: 1 } });
+const startDay = moment().startOf('month').startOf('week');
+const endDay = moment().endOf('month').endOf('week');
+
+// console.log(startDay.format('YYYY-MM-DD'));
+// console.log(endDay.format('YYYY-MM-DD'));
+
+window.startDay = startDay; //Это добавляю для удобства в консоли позже уберу
+window.endDay = endDay; //
+
+const calendar = [];
+const day = startDay.clone();
+
+window.day = day;
+
+while (!day.isAfter(endDay)) {
+  console.log(day);
+  calendar.push(day);
+  day.add(1, 'day');
+}
+
+const App = () => {
+  return (
+    <div>
+      <p>Проверка перезагрузки</p>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+И проверяю данное условие в devTools баузера !day.isAfter(endDay). Грубо говоря заполнение идет до тех пор пока полученное значение на каждой итерации не равно endDay. Пока переменная не равна условие истинно. Как только они становятся равными условие становится false и происходит остановка и выход из цикла.
+
+![](img/012.png)
+
+У меня вроде как все правильно. На каждой итерации новый день. Однако у него происходит мутация и каждый раз выводится значение дня полученное на первой итеации.
+
+Хотя если вывести занесенные данные в массив у меня получается все тоже самое.
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import moment from 'moment';
+
+// console.log(moment());
+
+window.moment = moment; // запихиваю библиотеку в глабольный объект
+
+moment.updateLocale('rus', { week: { down: 1 } });
+const startDay = moment().startOf('month').startOf('week');
+const endDay = moment().endOf('month').endOf('week');
+
+// console.log(startDay.format('YYYY-MM-DD'));
+// console.log(endDay.format('YYYY-MM-DD'));
+
+window.startDay = startDay; //Это добавляю для удобства в консоли позже уберу
+window.endDay = endDay; //
+
+const calendar = [];
+const day = startDay.clone();
+
+window.day = day;
+
+while (!day.isAfter(endDay)) {
+  // console.log(day);
+  calendar.push(day);
+  day.add(1, 'day');
+}
+console.log(calendar);
+
+const App = () => {
+  return (
+    <div>
+      <p>Проверка перезагрузки</p>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+Постоянно выводится 7 марта.
+
+![](img/013.png)
+
+Для того что бы все сработало необходимо склонировать полученное значение дня на каждой итерации и только после этого одно должно занестись в массив. т.е.
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import moment from 'moment';
+
+// console.log(moment());
+
+window.moment = moment; // запихиваю библиотеку в глабольный объект
+
+moment.updateLocale('rus', { week: { down: 1 } });
+const startDay = moment().startOf('month').startOf('week');
+const endDay = moment().endOf('month').endOf('week');
+
+// console.log(startDay.format('YYYY-MM-DD'));
+// console.log(endDay.format('YYYY-MM-DD'));
+
+window.startDay = startDay; //Это добавляю для удобства в консоли позже уберу
+window.endDay = endDay; //
+
+const calendar = [];
+const day = startDay.clone();
+
+window.day = day;
+
+while (!day.isAfter(endDay)) {
+  // console.log(day);
+  calendar.push(day.clone());
+  day.add(1, 'day');
+}
+console.log(calendar);
+
+const App = () => {
+  return (
+    <div>
+      <p>Проверка перезагрузки</p>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+![](img/014.png)
+
+И все супер!! У нас полностью набрался стек дней календаря. Я получаю массив объектов. Далее разберу верстку.
