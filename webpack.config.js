@@ -12,7 +12,7 @@ const filename = (ext) =>
 module.exports = {
   context: path.resolve(__dirname, 'src'), // то где храняться все файлы связанные со сборкой
   mode: 'development',
-  entry: './js/index.js', // путь считается от src
+  entry: './index.js', // путь считается от src
   output: {
     filename: `./js/${filename('js')}`,
     path: path.resolve(__dirname, 'app'), // складываю все файлы
