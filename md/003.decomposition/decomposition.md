@@ -156,10 +156,10 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 Так же декомпозирую. Первая задача создать механику.
 
-1. Календарь состоит из 6-ти недель. Это максимальное количество недель в месяце. Больше не бывает. Их бывает от четырех до шести. Если выводить по предыдущей механике с помощью moment.js, то размеры календаря будут плавать. Это херово!!! По - этому делаю 6-ть недель для того что бы он не плавал. 6 \* 7 = 42 ячейки.
-2. Получить структуру данных состоящую из 42 ячеек.
+1. Календарь состоит из 6-ти недель. Это максимальное количество недель в месяце. Больше не бывает. Их бывает от четырех до шести. Если выводить по предыдущей механике с помощью **moment.js**, то размеры календаря будут плавать. Это херово!!! По - этому делаю 6-ть недель для того что бы он не плавал. **6 \* 7 = 42** ячейки.
+2. Получить структуру данных состоящую из **42** ячеек.
 
-Начинаю работу в компоненте CalendarGrid.
+Начинаю работу в компоненте **CalendarGrid**.
 
 Создаю константу в которой будет содержаться количество ячеек.
 
@@ -176,7 +176,7 @@ const CalendarGrid = () => {
 export default CalendarGrid;
 ```
 
-Далее создаю структуру которая будет собственно хранить эти дни. const daysArray = []; Это массив, важно!!! Которая будет содержать 42 ячейки. И сначало я делаю пустышку const daysArray = [...Array(42)];
+Далее создаю структуру которая будет собственно хранить эти дни. **const daysArray = []; Это массив, важно!!!** Которая будет содержать 42 ячейки. И сначало я делаю пустышку **const daysArray = [...Array(42)];**
 
 И вывожу.
 
@@ -200,7 +200,7 @@ const CalendarGrid = () => {
 export default CalendarGrid;
 ```
 
-А вот внутри div я могу вывести 42 ничего. Но я лучше выведу индексы массива.
+А вот внутри **div** я могу вывести 42 ничего. Но я лучше выведу индексы массива.
 И так для вывода значений мне пришлось слега по другому написать.
 
 ```jsx
@@ -244,7 +244,7 @@ export default CalendarGrid;
 
 ![](img/001.png)
 
-Но так никто не пишет. Указываю repead сколько раз повторить 7 и размер 1rf.
+Но так никто не пишет. Указываю **repead** сколько раз повторить **7** и размер **1rf**.
 
 ```scss
 //components/CalendarGrid/CalendarGrid.scss
@@ -260,7 +260,7 @@ export default CalendarGrid;
 }
 ```
 
-И так же задаю tamplate для строк.
+И так же задаю **tamplate** для строк.
 
 ```jsx
 //components/CalendarGrid/CalendarGrid.js
@@ -351,7 +351,7 @@ export default CalendarGrid;
 
 Теперь отодвигаю индексы в правый верхний угол и делаю отступы.
 
-И так в самой ячейке будут строки RowInCell. Но Для даты нужно сделать отдельную обертку.
+И так в самой ячейке будут строки **RowInCell**. Но Для даты нужно сделать отдельную обертку.
 
 ```jsx
 //components/CalendarGrid/CalendarGrid.js
@@ -413,7 +413,7 @@ export default CalendarGrid;
 
 ![](img/004.png)
 
-Далее будет контролируемое смещение вправо. В RowInCell я буду говорить как будет происходить выравнивание. Кароче он тут функцию использует. Т.к. у меня данной библиотеки нет я просто пишу силь.
+Далее будет контролируемое смещение вправо. В **RowInCell** я буду говорить как будет происходить выравнивание. Кароче он тут функцию использует. Т.к. у меня данной библиотеки нет я просто пишу силь.
 
 ```scss
 //components/CalendarGrid/CalendarGrid.scss
@@ -453,7 +453,7 @@ export default CalendarGrid;
 
 Сами ячейки необходимо заполнить инстансами даты.
 
-И так мне нужен стартовый день откуда мы начинаем считать. Для этого в компоненте App.js в качестве props передаю стартовый день в компонент **\<CalendarGrid startDay={startDay} />**.
+И так мне нужен стартовый день откуда мы начинаем считать. Для этого в компоненте **App.js** в качестве props передаю стартовый день в компонент **\<CalendarGrid startDay={startDay} />**.
 
 ```jsx
 //components/app/App.js
@@ -500,7 +500,7 @@ const App = () => {
 export default App;
 ```
 
-И теперь в компоненте CalendarGrid я его должен перехватить **const CalendarGrid = ({startDay}) =>**. Далее мне нужна переменная const **day = startDay.clone();** Далее мне нужно заполнить массив const **daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());** И не забываю выставить ключи в **\<div className="CellWrapper" key={\_}>** пока указываю что он равен какой-то херне.. И выведу в консоль результат. кароче передача ключей у меня выдало ошибку. Позже их передам.
+И теперь в компоненте **CalendarGrid** я его должен перехватить **const CalendarGrid = ({startDay}) =>**. Далее мне нужна переменная const **day = startDay.clone();** Далее мне нужно заполнить массив **const** **daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());** И не забываю выставить ключи в **\<div className="CellWrapper" key={\_}>** пока указываю что он равен какой-то херне.. И выведу в консоль результат. кароче передача ключей у меня выдало ошибку. Позже их передам.
 
 ```jsx
 //components/app/App.js
@@ -620,7 +620,7 @@ export default CalendarGrid;
 
 И теперь все тип-топ.
 
-И теперь вместо индексов вывожу сами даты. Придумывает свойство dayItem и передаю его в **daysArray.map((dayItem) =>**. при передаче ключа указываю в какой формате выводить **\<div className="CellWrapper" key={dayItem.format('DDMMYY')}>**. И далее при выводе дня указываю в каком формате выводить день **\<div className="DayWrapper">{dayItem.format('D')}</div>**.
+И теперь вместо индексов вывожу сами даты. Придумывает свойство **dayItem** и передаю его в **daysArray.map((dayItem) =>**. при передаче ключа указываю в какой формате выводить **\<div className="CellWrapper" key={dayItem.format('DDMMYY')}>**. И далее при выводе дня указываю в каком формате выводить день **\<div className="DayWrapper">{dayItem.format('D')}</div>**.
 
 ```jsx
 //components/CalendarGrid/CalendarGrid.js
@@ -705,7 +705,7 @@ export default App;
 
 6. Отображание выходных дней.
 
-Для этого на div с классом CellWrapper нужно повешать событие при котором будет меняться цвет. Для начало пропишу просто isWeekend={true}.
+Для этого на **div** с классом **CellWrapper** нужно повешать событие при котором будет меняться цвет. Для начало пропишу просто **isWeekend={true}**.
 
 ```jsx
 //components/CalendarGrid/CalendarGrid.js
@@ -764,7 +764,7 @@ const CalendarGrid = ({ startDay }) => {
           <div
             className="CellWrapper"
             key={dayItem.format('DDMMYY')}
-            isWeekend={true}
+            isWeekday={true}
           >
             <div className="indexItem">
               <div className="RowInCell">
@@ -787,7 +787,7 @@ export default CalendarGrid;
 
 ![](img/008.png)
 
-Теперь это вырезаю -{dayItem.day()}. А в isWeekend пишу следующее **isWeekend={dayItem.day === 6 || dayItem.day === 0}**.
+Теперь это вырезаю **-{dayItem.day()}**. А в isWeekend пишу следующее **isWeekday={dayItem.day === 6 || dayItem.day === 0}**.
 
 ```jsx
 import React from 'react';
@@ -829,3 +829,75 @@ export default CalendarGrid;
 ```shell
 npm install styled-components
 ```
+
+Сильно я не хотел использовать инлайновые стили. Но ничего не поделаешь!!!
+
+У становка и использование библиотеки [https://styled-components.com/docs/basics#installation](https://styled-components.com/docs/basics#installation).
+
+```json
+// .babelrc
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "corejs": 3.8, // Указываю версию библиотеки
+        "useBuiltIns": "usage", // это означает то что babel попытается найти те места в коде которые используют новые функции языка и подключить только нужные polyfills
+        "debug": true, // вывод потдерживаемых браузеров
+        "modules": false, // запрет трансформации import
+        "targets": {
+          "chrome": "58",
+          "ie": "11"
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-class-properties"],
+    "babel-plugin-styled-components"
+  ]
+}
+```
+
+```jsx
+//components/CalendarGrid/CalendarGrid.js
+import React from 'react';
+import styled from 'styled-components';
+import './CalendarGrid.scss';
+
+const CellWrapper = styled.div`
+  background-color: ${(props) => (props.isWeekday ? '#27282A' : '#1E1F21')};
+`;
+
+const CalendarGrid = ({ startDay }) => {
+  const day = startDay.clone().subtract(1, 'day');
+  const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
+  // window.daysArray = daysArray;
+  console.log(daysArray);
+
+  return (
+    <div className="GridWrapper">
+      {daysArray.map((dayItem) => {
+        return (
+          <CellWrapper
+            className="CellWrapper"
+            key={dayItem.format('DDMMYY')}
+            isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
+          >
+            <div className="indexItem">
+              <div className="RowInCell">
+                <div className="DayWrapper">{dayItem.format('D')}</div>
+              </div>
+            </div>
+          </CellWrapper>
+        );
+      })}
+    </div>
+  );
+};
+
+export default CalendarGrid;
+```
+
+![](img/009.png)
