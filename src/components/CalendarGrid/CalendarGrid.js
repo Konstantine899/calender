@@ -24,7 +24,7 @@ const CalendarGrid = ({ startDay }) => {
         return (
           <CellWrapper
             className="CellWrapper"
-            key={dayItem.format('DDMMYY')}
+            key={dayItem.unix()}
             isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
           >
             <div className="indexItem">
