@@ -1,4 +1,5 @@
 //components/CalendarGrid/CalendarGrid.js
+import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 import './CalendarGrid.scss';
@@ -7,11 +8,15 @@ const CellWrapper = styled.div`
   background-color: ${(props) => (props.isWeekday ? '#27282A' : '#1E1F21')};
 `;
 
+const CurrentDay = styled('div')``;
+
 const CalendarGrid = ({ startDay }) => {
   const day = startDay.clone().subtract(1, 'day');
   const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
   // window.daysArray = daysArray;
   console.log(daysArray);
+
+  const isCurrentDay = (day) => moment().isSame(day, 'day');
 
   return (
     <div className="GridWrapper">
@@ -24,7 +29,14 @@ const CalendarGrid = ({ startDay }) => {
           >
             <div className="indexItem">
               <div className="RowInCell">
-                <div className="DayWrapper">{dayItem.format('D')}</div>
+                <div className="DayWrapper">
+                  {!isCurrentDay(dayItem) && dayItem.format('D')}
+                  {isCurrentDay(dayItem) && (
+                    <CurrentDay className="CurrentDay">
+                      {dayItem.format('D')}
+                    </CurrentDay>
+                  )}
+                </div>
               </div>
             </div>
           </CellWrapper>
