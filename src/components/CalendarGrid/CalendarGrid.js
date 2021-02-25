@@ -12,17 +12,19 @@ const GridWrapper = styled.div`
 const CellWrapper = styled.div`
   background-color: ${(props) => (props.isWeekday ? '#27282A' : '#1E1F21')};
   min-height: ${(props) => (props.isHeader ? 24 : 80)}px;
+  color: ${(props) => (props.isSelectedMonth ? '#DDDDDD' : '#555759')};
 `;
 
 const CurrentDay = styled('div')``;
 
-const CalendarGrid = ({ startDay }) => {
+const CalendarGrid = ({ startDay, today }) => {
   const day = startDay.clone().subtract(1, 'day');
   const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
   // window.daysArray = daysArray;
   console.log(daysArray);
 
   const isCurrentDay = (day) => moment().isSame(day, 'day');
+  const isSelectedMonth = (day) => today.isSame(day, 'month');
 
   return (
     <>
@@ -46,6 +48,7 @@ const CalendarGrid = ({ startDay }) => {
               className="CellWrapper"
               key={dayItem.unix()}
               isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
+              isSelectedMonth={isSelectedMonth(dayItem)}
             >
               <div className="indexItem">
                 <div className="RowInCell">

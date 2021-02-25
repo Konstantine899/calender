@@ -5,7 +5,7 @@ import './Header.scss';
 const DivWrapperHider = styled('div')``;
 
 const Header = () => {
-  return <DivWrapperHider className="DivWrapperHider">Header</DivWrapperHider>;
+  return <DivWrapperHider className="DivWrapperHider"></DivWrapperHider>;
 };
 
 export default Header;
