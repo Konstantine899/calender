@@ -2,13 +2,13 @@
 .GridWrapper {
   display: grid;
   grid-template-columns: repeat(7, 1fr); // разбиваю на колонки
-  grid-template-rows: repeat(6, 1fr);
+  // grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px; // зазор между ячейками
   background-color: #404040; // цвет подложки
 }
 .CellWrapper {
+  // min-height: 80px;
   min-width: 140px;
-  min-height: 80px;
   background-color: #1e1f21;
   color: #dddcdd;
 }
@@ -16,6 +16,11 @@
 .RowInCell {
   display: flex;
   justify-content: flex-end;
+  .DayColor {
+    color: #dcdddd;
+    font-size: 20px;
+    margin-right: 20px;
+  }
 }
 .DayWrapper {
   height: 33px;

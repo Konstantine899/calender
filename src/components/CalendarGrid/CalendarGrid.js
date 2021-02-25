@@ -4,8 +4,14 @@ import React from 'react';
 import styled from 'styled-components';
 import './CalendarGrid.scss';
 
+const GridWrapper = styled.div`
+  background-color: ${(props) => (props.isHeader ? '#1e1f21' : '#4d4c4d')};
+  ${(props) => props.isHeader && 'border-bottom: 1px solid #4d4c4d'}
+`;
+
 const CellWrapper = styled.div`
   background-color: ${(props) => (props.isWeekday ? '#27282A' : '#1E1F21')};
+  min-height: ${(props) => (props.isHeader ? 24 : 80)}px;
 `;
 
 const CurrentDay = styled('div')``;
@@ -19,30 +25,45 @@ const CalendarGrid = ({ startDay }) => {
   const isCurrentDay = (day) => moment().isSame(day, 'day');
 
   return (
-    <div className="GridWrapper">
-      {daysArray.map((dayItem) => {
-        return (
-          <CellWrapper
-            className="CellWrapper"
-            key={dayItem.unix()}
-            isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
-          >
-            <div className="indexItem">
-              <div className="RowInCell">
-                <div className="DayWrapper">
-                  {!isCurrentDay(dayItem) && dayItem.format('D')}
-                  {isCurrentDay(dayItem) && (
-                    <CurrentDay className="CurrentDay">
-                      {dayItem.format('D')}
-                    </CurrentDay>
-                  )}
-                </div>
+    <>
+      <GridWrapper className="GridWrapper" isHeader>
+        {[...Array(7)].map((_, i) => (
+          <CellWrapper isHeader>
+            <div className="RowInCell">
+              <div className="DayColor">
+                {moment()
+                  .day(i + 1) // + 1 для понедельника
+                  .format('dd')}
               </div>
             </div>
           </CellWrapper>
-        );
-      })}
-    </div>
+        ))}
+      </GridWrapper>
+      <GridWrapper className="GridWrapper">
+        {daysArray.map((dayItem) => {
+          return (
+            <CellWrapper
+              className="CellWrapper"
+              key={dayItem.unix()}
+              isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
+            >
+              <div className="indexItem">
+                <div className="RowInCell">
+                  <div className="DayWrapper">
+                    {!isCurrentDay(dayItem) && dayItem.format('D')}
+                    {isCurrentDay(dayItem) && (
+                      <CurrentDay className="CurrentDay">
+                        {dayItem.format('D')}
+                      </CurrentDay>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </CellWrapper>
+          );
+        })}
+      </GridWrapper>
+    </>
   );
 };
 

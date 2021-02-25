@@ -12,6 +12,7 @@ const Monitor = ({ today, prevHandler, todayHandler, nextHandler }) => {
         <span className="DivWrapperMonth">{today.format('MMMM')}</span>
         <span>{today.format('YYYY')}</span>
       </div>
+
       <div>
         <button className="ButtonWrapper" onClick={prevHandler}>
           &lt;
