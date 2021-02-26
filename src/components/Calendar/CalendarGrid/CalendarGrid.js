@@ -30,7 +30,7 @@ const CalendarGrid = ({ startDay, today }) => {
     <>
       <GridWrapper className="GridWrapper" isHeader>
         {[...Array(7)].map((_, i) => (
-          <CellWrapper isHeader>
+          <CellWrapper isHeader key={i}>
             <div className="RowInCell">
               <div className="DayColor">
                 {moment()
