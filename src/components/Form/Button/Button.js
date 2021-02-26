@@ -2,8 +2,13 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = () => {
-  return <div>Button</div>;
+const Button = (props) => {
+  console.log(props.style);
+  return (
+    <button style={props.style} onClick={props.action}>
+      {props.title}
+    </button>
+  );
 };
 
 export default Button;
