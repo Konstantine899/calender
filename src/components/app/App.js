@@ -11,6 +11,7 @@ import FormContainer from '../../containers/FormContainer';
 
 import './App.scss';
 
+const FormCalendarWrapper = styled('div')``;
 const ShadowWrapper = styled('div')``;
 
 function App() {
@@ -33,17 +34,19 @@ function App() {
 
   return (
     <>
-      <ShadowWrapper className="ShadowWrapper">
-        <Header />
-        <Monitor
-          today={today}
-          prevHandler={prevHandler}
-          todayHandler={todayHandler}
-          nextHandler={nextHandler}
-        />
-        <CalendarGrid startDay={startDay} today={today} />
-      </ShadowWrapper>
-      <FormContainer />
+      <FormCalendarWrapper className="FormCalendarWrapper">
+        <ShadowWrapper className="ShadowWrapper">
+          <Header />
+          <Monitor
+            today={today}
+            prevHandler={prevHandler}
+            todayHandler={todayHandler}
+            nextHandler={nextHandler}
+          />
+          <CalendarGrid startDay={startDay} today={today} />
+        </ShadowWrapper>
+        <FormContainer />
+      </FormCalendarWrapper>
     </>
   );
 }
