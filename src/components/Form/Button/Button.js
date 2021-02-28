@@ -11,7 +11,7 @@ const Button = (props) => {
       onClick={props.action}
     >
       {props.title}
-      Пример кнопки
+      Отправить
     </button>
   );
 };

@@ -91,87 +91,89 @@ export default class FormContainer extends Component {
   render() {
     return (
       <form>
-        <CheckBox />
-        <Input
-          InputType={'number'}
-          name="Q1"
-          // title={'Q1'}
-          value={this.state.newFormValue.Q1}
-          placeholder={'Введите Q1'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="Q2"
-          // title={'Q2'}
-          value={this.state.newFormValue.Q2}
-          placeholder={'Введите Q2'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="T1"
-          // title={'T1'}
-          value={this.state.newFormValue.T1}
-          placeholder={'Введите T1'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="T2"
-          // title={'T2'}
-          value={this.state.newFormValue.T2}
-          placeholder={'Введите T2'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="V1"
-          // title={'V1'}
-          value={this.state.newFormValue.V1}
-          placeholder={'Введите V1'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="V2"
-          // title={'V2'}
-          value={this.state.newFormValue.V2}
-          placeholder={'Введите V2'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="M1"
-          // title={'M1'}
-          value={this.state.newFormValue.M1}
-          placeholder={'Введите M1'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="M2"
-          // title={'M2'}
-          value={this.state.newFormValue.M2}
-          placeholder={'Введите M2'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="work_device"
-          // title={'work_device'}
-          value={this.state.newFormValue.work_device}
-          placeholder={'Введите work_device'}
-          handleChange={this.handleInput}
-        />
-        <Input
-          InputType={'number'}
-          name="work_device_error"
-          // title={'work_device_error'}
-          value={this.state.newFormValue.work_device_error}
-          placeholder={'Введите work_device_error'}
-          handleChange={this.handleInput}
-        />
+        <div className="InputWrapper">
+          <Input
+            InputType={'number'}
+            name="Q1"
+            // title={'Q1'}
+            value={this.state.newFormValue.Q1}
+            placeholder={'Введите Q1'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="Q2"
+            // title={'Q2'}
+            value={this.state.newFormValue.Q2}
+            placeholder={'Введите Q2'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="T1"
+            // title={'T1'}
+            value={this.state.newFormValue.T1}
+            placeholder={'Введите T1'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="T2"
+            // title={'T2'}
+            value={this.state.newFormValue.T2}
+            placeholder={'Введите T2'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="V1"
+            // title={'V1'}
+            value={this.state.newFormValue.V1}
+            placeholder={'Введите V1'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="V2"
+            // title={'V2'}
+            value={this.state.newFormValue.V2}
+            placeholder={'Введите V2'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="M1"
+            // title={'M1'}
+            value={this.state.newFormValue.M1}
+            placeholder={'Введите M1'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="M2"
+            // title={'M2'}
+            value={this.state.newFormValue.M2}
+            placeholder={'Введите M2'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="work_device"
+            // title={'work_device'}
+            value={this.state.newFormValue.work_device}
+            placeholder={'Время работы'}
+            handleChange={this.handleInput}
+          />
+          <Input
+            InputType={'number'}
+            name="work_device_error"
+            // title={'work_device_error'}
+            value={this.state.newFormValue.work_device_error}
+            placeholder={'Время работы с ошибкой'}
+            handleChange={this.handleInput}
+          />
+        </div>
+
         <TextArea
           name="exampleFormControlTextarea1"
           // title={'About you.'}
@@ -180,8 +182,9 @@ export default class FormContainer extends Component {
           handleChange={this.handleTextArea}
           placeholder={'Введите примечания'}
         />
-        <Select />
-        <Button />
+        <div>
+          <Button />
+        </div>
       </form>
     );
   }
