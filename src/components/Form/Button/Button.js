@@ -5,8 +5,13 @@ import './Button.scss';
 const Button = (props) => {
   console.log(props.style);
   return (
-    <button style={props.style} onClick={props.action}>
+    <button
+      className="btn btn-primary"
+      style={props.style}
+      onClick={props.action}
+    >
       {props.title}
+      Пример кнопки
     </button>
   );
 };

@@ -13,6 +13,8 @@ import './App.scss';
 
 const FormCalendarWrapper = styled('div')``;
 const ShadowWrapper = styled('div')``;
+const BootstrapContainer = styled('div')``;
+const BootstrapRow = styled('div')``;
 
 function App() {
   moment.updateLocale('ru', { week: { down: 1 } });
@@ -34,19 +36,21 @@ function App() {
 
   return (
     <>
-      <FormCalendarWrapper className="FormCalendarWrapper">
-        <ShadowWrapper className="ShadowWrapper">
-          <Header />
-          <Monitor
-            today={today}
-            prevHandler={prevHandler}
-            todayHandler={todayHandler}
-            nextHandler={nextHandler}
-          />
-          <CalendarGrid startDay={startDay} today={today} />
-        </ShadowWrapper>
-        <FormContainer />
-      </FormCalendarWrapper>
+      <BootstrapContainer className="container">
+        <FormCalendarWrapper className="FormCalendarWrapper">
+          <ShadowWrapper className="ShadowWrapper">
+            <Header />
+            <Monitor
+              today={today}
+              prevHandler={prevHandler}
+              todayHandler={todayHandler}
+              nextHandler={nextHandler}
+            />
+            <CalendarGrid startDay={startDay} today={today} />
+          </ShadowWrapper>
+        </FormCalendarWrapper>
+        <FormContainer className="FormContainer" />
+      </BootstrapContainer>
     </>
   );
 }
