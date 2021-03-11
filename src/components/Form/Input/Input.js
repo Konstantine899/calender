@@ -1,8 +1,8 @@
 //components/Input/Input.js
-import React from 'react';
-import './Input.scss';
+import React from "react";
+import "./Input.scss";
 
-const Input = (props) => {
+export const Input = (props) => {
   return (
     <div className="form-group">
       <label htmlFor={props.name} className="form-label">
@@ -20,5 +20,3 @@ const Input = (props) => {
     </div>
   );
 };
-
-export default Input;

@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "sourceMap": false,
+
+    "lib": ["esnext", "dom"],
+
+    "jsx": "react",
+    "noImplicitAny": true,
+    "noResolve": false,
+
+    "outDir": "./build",
+    "rootDir": "./src",
+    "removeComments": true,
+
+    "noEmitOnError": true,
+    "strict": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "moduleResolution": "node",
+    "plugins": [],
+
+    "typeRoots": ["node_modules/@types", "src/types"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/types",
+    "src/mocks/FurnitureCollections.txt",
+    "src/containers/FormContainer/FormContainer.tsx",
+    "src/containers/FormContainer/index.еs"
+  ],
+  "exclude": ["node_modules", ".vscode"]
+}
