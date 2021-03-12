@@ -1,8 +1,8 @@
 import {
-  FormContainerAction,
   FormContainerState,
+  FormContainerAction,
   FORM_CONTAINER,
-} from "./FormContainer.types";
+} from "./formContainer.types";
 
 export const formContainerState: FormContainerState = {
   Q1: "",
@@ -13,8 +13,8 @@ export const formContainerState: FormContainerState = {
   V2: "",
   M1: "",
   M2: "",
-  work_device: "",
-  work_device_error: "",
+  workDevice: "",
+  workDeviceError: "",
   exampleFormControlTextarea1: "",
 };
 
@@ -22,17 +22,17 @@ export const formContainerReducer = (
   state = formContainerState,
   { type, payload }: FormContainerAction
 ): FormContainerState => {
-  let newState;
-
   switch (type) {
     case FORM_CONTAINER.SET_Q1: {
-      newState = { ...state, Q1: payload };
-      return newState;
+      return { ...state, ...payload };
     }
 
     case FORM_CONTAINER.SET_Q2: {
-      newState = { ...state, Q2: payload };
-      return newState;
+      return { ...state, ...payload };
+    }
+
+    case FORM_CONTAINER.CLEAR_FORM: {
+      return { ...formContainerState };
     }
 
     default:

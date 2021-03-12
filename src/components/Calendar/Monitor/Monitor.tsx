@@ -1,16 +1,16 @@
 //src/components/Monitor/Monitor.js
-import React from 'react';
-import styled from 'styled-components';
-import './Monitor.scss';
+import React from "react";
+import styled from "styled-components";
+import "./Monitor.scss";
 
-const DivWrapper = styled('div')``;
+const DivWrapper = styled("div")``;
 
-const Monitor = ({ today, prevHandler, todayHandler, nextHandler }) => {
+const Monitor = ({ today, prevHandler, todayHandler, nextHandler }: any) => {
   return (
     <DivWrapper className="DivWrapper">
       <div>
-        <span className="DivWrapperMonth">{today.format('MMMM')}</span>
-        <span>{today.format('YYYY')}</span>
+        <span className="DivWrapperMonth">{today.format("MMMM")}</span>
+        <span>{today.format("YYYY")}</span>
       </div>
 
       <div>
