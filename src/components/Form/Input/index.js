@@ -1,5 +1,5 @@
 //components/Input/index.js
 
-import Input from './Input';
+import { Input } from "./Input.js";
 
 export default Input;
