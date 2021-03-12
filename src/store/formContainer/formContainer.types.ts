@@ -1,30 +1,29 @@
-export interface FormContainerState {
-  Q1: string;
-  Q2: string;
-  T1: string;
-  T2: string;
-  V1: string;
-  V2: string;
-  M1: string;
-  M2: string;
-  work_device: string;
-  work_device_error: string;
-  exampleFormControlTextarea1: string;
-}
+import { FormContainerData } from "../../types/common.types";
+
+export type FormContainerState = FormContainerData;
 
 export enum FORM_CONTAINER {
   SET_Q1 = "FORM_CONTAINER.SET_Q1",
   SET_Q2 = "FORM_CONTAINER.SET_Q2",
-  // допиши руками
+
+  SUBMIT_FORM = "FORM_CONTAINER.SUBMIT_FORM",
+  CLEAR_FORM = "FORM_CONTAINER.CLEAR_FORM",
 }
 
 export type FormContainerAction =
   | {
       type: FORM_CONTAINER.SET_Q1;
-      payload: string;
+      payload: { Q1: string };
     }
   | {
       type: FORM_CONTAINER.SET_Q2;
-      payload: string;
+      payload: { Q2: string };
+    }
+  | {
+      type: FORM_CONTAINER.SUBMIT_FORM;
+      payload: {};
+    }
+  | {
+      type: FORM_CONTAINER.CLEAR_FORM;
+      payload: {};
     };
-// попиши руками
